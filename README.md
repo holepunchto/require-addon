@@ -1,15 +1,15 @@
-# load-addon
+# require-addon
 
-Load native addons across JavaScript runtimes.
+Import native addons across JavaScript runtimes.
 
 ```
-npm i load-addon
+npm i require-addon
 ```
 
 ## Usage
 
 ```js
-const bindings = require('load-addon')(__dirname)
+const bindings = require('require-addon')(__dirname)
 ```
 
 ## License
