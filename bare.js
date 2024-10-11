@@ -1,3 +1,3 @@
-module.exports = function addon (referrer) {
-  return require.addon(referrer)
+module.exports = function addon (specifier, parentURL) {
+  return require.addon(specifier, parentURL)
 }

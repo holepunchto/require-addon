@@ -1,5 +1,5 @@
-module.exports = function addon (referrer) {
-  let msg = 'Cannot find addon \'.\''
+module.exports = function addon (specifier, referrer) {
+  let msg = `Cannot find addon '${specifier}'`
 
   if (referrer) msg += ` imported from '${referrer}'`
 

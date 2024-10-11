@@ -2,20 +2,13 @@ const url = require('url')
 const resolve = require('bare-addon-resolve')
 
 const host = process.platform + '-' + process.arch
+const conditions = ['node', process.platform, process.arch]
+const extensions = ['.node']
 
-module.exports = function addon (referrer) {
-  const parentURL = url.pathToFileURL(referrer)
+module.exports = function addon (specifier, parentURL) {
+  if (typeof parentURL === 'string') parentURL = url.pathToFileURL(parentURL)
 
-  if (parentURL.pathname[parentURL.pathname.length - 1] !== '/') {
-    parentURL.pathname += '/'
-  }
-
-  for (const resolution of resolve('.', parentURL, {
-    host,
-    extensions: [
-      '.node'
-    ]
-  }, readPackage)) {
+  for (const resolution of resolve(specifier, parentURL, { host, conditions, extensions }, readPackage)) {
     switch (resolution.protocol) {
       case 'file:':
         try {
@@ -26,9 +19,9 @@ module.exports = function addon (referrer) {
     }
   }
 
-  let msg = 'Cannot find addon \'.\''
+  let msg = `Cannot find addon '${specifier}'`
 
-  if (referrer) msg += ` imported from '${referrer}'`
+  if (parentURL) msg += ` imported from '${parentURL.href}'`
 
   throw new Error(msg)
 

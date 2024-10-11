@@ -1,5 +1,5 @@
 const implementation = require('#implementation')
 
-module.exports = function addon (referrer, opts = {}) {
-  return implementation(referrer, opts)
+module.exports = function addon (specifier, referrer, opts = {}) {
+  return implementation(specifier, referrer, opts)
 }

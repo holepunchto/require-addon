@@ -9,7 +9,7 @@ npm i require-addon
 ## Usage
 
 ```js
-const bindings = require('require-addon')(__dirname)
+const bindings = require('require-addon')('.', __filename)
 ```
 
 ## License
