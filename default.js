@@ -1,7 +1,7 @@
-module.exports = function addon (specifier, referrer) {
+module.exports = function addon (specifier, parentURL) {
   let msg = `Cannot find addon '${specifier}'`
 
-  if (referrer) msg += ` imported from '${referrer}'`
+  if (parentURL) msg += ` imported from '${parentURL}'`
 
   throw new Error(msg)
 }
