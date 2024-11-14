@@ -1,5 +1,5 @@
-const implementation = require('#implementation')
+const runtime = require('#runtime')
 
 module.exports = function addon (specifier, parentURL, opts = {}) {
-  return implementation(specifier, parentURL, opts)
+  return runtime(specifier, parentURL, opts)
 }

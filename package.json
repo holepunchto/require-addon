@@ -3,21 +3,15 @@
   "version": "1.0.3",
   "description": "Import native addons across JavaScript runtimes",
   "exports": {
-    ".": "./index.js",
+    ".": {
+      "bare": "./lib/runtime/bare.js",
+      "node": "./lib/runtime/node.js",
+      "default": "./lib/runtime/default.js"
+    },
     "./package": "./package.json"
   },
-  "imports": {
-    "#implementation": {
-      "bare": "./bare.js",
-      "node": "./node.js",
-      "default": "./default.js"
-    }
-  },
   "files": [
-    "bare.js",
-    "default.js",
-    "index.js",
-    "node.js"
+    "lib"
   ],
   "scripts": {
     "test": "standard"
