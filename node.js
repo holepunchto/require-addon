@@ -19,11 +19,7 @@ module.exports = function addon (specifier, parentURL) {
     }
   }
 
-  let msg = `Cannot find addon '${specifier}'`
-
-  if (parentURL) msg += ` imported from '${parentURL.href}'`
-
-  throw new Error(msg)
+  throw new Error(`Cannot find addon '${specifier}' imported from '${parentURL.href}'`)
 
   function readPackage (packageURL) {
     try {
