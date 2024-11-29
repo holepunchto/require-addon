@@ -1,6 +1,6 @@
 {
   "name": "require-addon",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "Import native addons across JavaScript runtimes",
   "exports": {
     ".": "./index.js",
