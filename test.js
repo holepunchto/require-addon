@@ -88,7 +88,10 @@ test('bundle with preresolutions', (t) => {
 
 function write(bundle, keys, base = '/') {
   for (const key of keys) {
-    bundle.write(path.join(base, key), fs.readFileSync(key))
+    bundle.write(
+      path.join(base, key),
+      fs.readFileSync(path.join(__dirname, key))
+    )
   }
 }
 
