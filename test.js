@@ -32,6 +32,28 @@ test('bundle', (t) => {
   )
 })
 
+test('bundle with bound require.addon', (t) => {
+  const bundle = new Bundle()
+
+  withRequireAddon(bundle)
+
+  bundle
+    .write(
+      '/binding.js',
+      "require.addon = require('require-addon'); module.exports = require.addon('.', __filename)",
+      {
+        main: true
+      }
+    )
+    .write('/package.json', '{ "name": "addon", "addon": true }')
+
+  t.is(
+    evaluate(bundle.mount(pathToFileURL('./test/fixtures/addon/test.bundle/')))
+      .exports,
+    42
+  )
+})
+
 test('bundle with preresolutions', (t) => {
   const bundle = new Bundle()
 
