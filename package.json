@@ -25,10 +25,11 @@
     "lib"
   ],
   "scripts": {
+    "format": "prettier --write .",
+    "lint": "prettier --check .",
     "test": "npm run lint && npm run test:bare && npm run test:node",
     "test:bare": "bare test.js",
-    "test:node": "node test.js",
-    "lint": "prettier . --check"
+    "test:node": "node test.js"
   },
   "repository": {
     "type": "git",
@@ -53,7 +54,7 @@
     "bare-fs": "^4.0.0",
     "bare-path": "^3.0.0",
     "brittle": "^3.7.0",
-    "prettier": "^3.4.1",
-    "prettier-config-standard": "^7.0.0"
+    "prettier": "^3.6.2",
+    "prettier-config-holepunch": "^1.0.0"
   }
 }
