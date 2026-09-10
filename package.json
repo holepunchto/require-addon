@@ -28,11 +28,11 @@
     "lib"
   ],
   "scripts": {
-    "format": "prettier --write .",
-    "test": "npm run test:node && npm run test:bare",
-    "test:bare": "brittle-bare test.js",
-    "test:node": "brittle-node test.js",
-    "lint": "prettier --check . && lunte"
+    "format": "prettier --write . && lunte --fix",
+    "lint": "prettier --check . && lunte",
+    "test": "npm run test:bare && npm run test:node",
+    "test:bare": "brittle-bare --coverage test.js",
+    "test:node": "brittle-node --coverage test.js"
   },
   "repository": {
     "type": "git",
