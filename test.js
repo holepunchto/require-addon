@@ -10,6 +10,28 @@ test('basic', (t) => {
   t.is(requireAddon('.', pathToFileURL('./test/fixtures/addon/')), 42)
 })
 
+test('missing', (t) => {
+  t.plan(1)
+
+  try {
+    requireAddon('.', pathToFileURL('./test/fixtures/missing/'))
+  } catch (err) {
+    t.is(err.code, 'ADDON_NOT_FOUND')
+  }
+})
+
+test('unloadable', (t) => {
+  t.plan(3)
+
+  try {
+    requireAddon('.', pathToFileURL('./test/fixtures/unloadable/'))
+  } catch (err) {
+    t.is(err.code, 'CANNOT_LOAD')
+    t.ok(err.message.includes('/test/fixtures/unloadable/prebuilds/'))
+    t.ok(err.cause, 'error from the loader is preserved as the cause')
+  }
+})
+
 test('bundle', (t) => {
   const bundle = new Bundle()
 
